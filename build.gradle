@@ -1,0 +1,21 @@
+group 'de.no3x.tes'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+
+task initSourceFolders { // add << before { to prevent executing during configuration phase
+    sourceSets*.java.srcDirs*.each { it.mkdirs() }
+    sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'commons-beanutils:commons-beanutils:1.9.2'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
